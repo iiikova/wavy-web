@@ -1,13 +1,54 @@
 // variables
-$color-white: white
+    // colors
+$color-white: #ffff
 $color-black: #232323
+$color-second: #34e7ee
+
+$bgc-primary: linear-gradient(to left, #4b6cb7, #182848)
+$bgc-second: #071124
+
 // / variables
+
+// === mixins === //
+    // fonts & paddings
+@mixin title
+    font-size: 2.5rem
+    font-weight: bold
+    padding-bottom: 10px
+@mixin subtitle
+    padding-bottom: 30px
+    font-size: 1.2rem
+    color: gray
+@mixin button
+    margin-top: 30px
+    padding: 10px 40px
+    text-transform: uppercase
+    font-size: 1.2rem
+    background-color: orange
+    border-radius: 40px
+    border: none
+    outline: none
+@mixin icon-outer
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 80px
+    width: 80px
+    background: linear-gradient(to left, #4b6cb7, #182848)
+    border-radius: 50%
+    margin-bottom: 20px
+@mixin icon-inner
+    object-fit: contain
+    height: 50px
+    width: 80px
+@mixin padding-top-button
+    padding-top: 30px
+    padding-bottom: 30px
+// === mixins === //
 
 // commons
 
 .section-outer
-    width: 100%
-    margin: 0 auto
 .section-inner
     width: 100%
     margin: 0 auto
@@ -17,36 +58,29 @@ $color-black: #232323
 .section-header
     height: 100%
     color: $color-white
-    background: linear-gradient(to left, #4b6cb7, #182848)
+    background: $bgc-primary
     .section-inner
-        display: flex
-        flex-direction: column
-        width: 1224px
-
+        width: 80%
         .section-header-toolbar
+            @include padding-top-button
             display: flex
             align-items: center
-            justify-content: space-between
-            flex-shrink: 1
-            padding-top: 15px
-            padding-bottom: 15px
-
             .section-header-logo
-                font-size: 1.5rem
-                text-transform: uppercase
-                font-weight: bold
-            .section-header-logo img
-                height: 20px
+                @include title
+                color: $color-white
 
         .section-header-menu
             display: flex
+            justify-content: space-between
             text-transform: uppercase
+            padding: 0
             &-item
-                padding-left: 40px
+                padding-left: 30px
                 font-size: 1rem
             &-item:last-child
-                padding: 0px 35px
-                margin-left: 60px
+                padding: 0 5px
+                height: 28px
+                margin-left: 30px
                 border: 1px solid
                 border-radius: 10px
             &-item a
@@ -54,44 +88,40 @@ $color-black: #232323
                 text-decoration: none
 
         .section-header-content
+            @include padding-top-button
+
             flex-grow: 1
             display: flex
             align-items: center
             justify-content: center
-            margin-bottom: 30px
+            width: 80%
 
         .section-header-wrapper
-            width: 80%
             display: flex
             justify-content: space-between
+            margin: 0
             .section-header-wrapper-left
                 display: flex
                 flex-direction: column
                 justify-content: center
-                width: 500px
                 &-title
-                    font-size: 1.2rem
-                    margin-bottom: 20px
+                    @include subtitle
+
                     text-decoration: underline
                     text-transform: uppercase
-                    color: #34e7ee
-
+                    color: $color-second
                 &-text
-                    font-size: 4rem
+                    font-size: 2.5rem
                     font-weight: bold
 
                 &-button button
-                    margin-top: 30px
-                    padding: 10px 40px
-                    text-transform: uppercase
-                    font-size: 1.2rem
-                    background-color: orange
-                    border-radius: 40px
-                    border: none
-                    outline: none
+                    @include button
+                    margin-bottom: 30px
             .section-header-wrapper-right
                 &-img img
+                    justify-content: flex-end
                     height: 550px
+                    margin-bottom: 40px
 
 // / header //
 
@@ -99,29 +129,24 @@ $color-black: #232323
 .section-inner
 
 .section-welcome
+    @include padding-top-button
+
     text-align: center
-    margin-top: 30px
-    padding-bottom: 30px
 
     &-content
         width: 80%
         margin: 0 auto
         &-title
-            font-size: 3rem
-            font-weight: bold
-            padding-bottom: 10px
-
+            @include title
         &-subtitle
-            padding-bottom: 50px
-            font-size: 1.2rem
-            color: gray
+            @include subtitle
         &-text
-            font-size: 1.2rem
-            padding-bottom: 50px
+            @include subtitle
         &-logo
             display: flex
             justify-content: space-between
             & img
+                padding-bottom: 10px
                 height: 60px
 
 // / section-welcome //
@@ -131,41 +156,33 @@ $color-black: #232323
 
     .section-outstanding
         display: flex
-        width: 100%
         margin: auto
         &-left
-            background: linear-gradient(to left, #4b6cb7, #182848)
+            background: $bgc-primary
             color: $color-white
-            flex-basis: 40%
             display: flex
             flex-direction: column
             justify-content: center
             align-items: center
             &-content
-
+                padding-top: 20px
+                padding-bottom: 20px
                 &-header
                     font-size: 1rem
                     margin-bottom: 20px
                     text-decoration: underline
                     text-transform: uppercase
-                    color: #34e7ee
+                    color: $color-second
                 &-title
-                    font-size: 2rem
-                    font-weight: bold
+                    @include title
                 &-text
+                    @include subtitle
+                    color: $color-white
                 &-button button
-                    margin-top: 30px
-                    padding: 10px 40px
-                    text-transform: uppercase
-                    font-size: 1.2rem
-                    background-color: orange
-                    border-radius: 40px
-                    border: none
-                    outline: none
-
+                    @include button
+        &-right
+            padding: 0
         &-right img
-            background-color: blue
-            flex-basis: 60%
             object-fit: none
             height: 400px
             width: 100%
@@ -174,61 +191,53 @@ $color-black: #232323
 // section features //
 .section-features
     .section-features-content
+        @include padding-top-button
+
         width: 80%
-        margin: 0 auto
-        padding-top: 50px
-        padding-bottom: 50px
+
         .section-features-header
             display: flex
             flex-direction: column
             align-items: center
+            text-align: center
+
             &-title
-                font-size: 3rem
-                font-weight: bold
-                padding-bottom: 10px
-                padding-bottom: 10px
+                @include title
+
             &-subtitle
-                font-size: 1.2rem
-                color: gray
+                @include subtitle
         .section-features-features
+            @include padding-top-button
+
             display: flex
             justify-content: space-between
             text-align: center
-            padding-top: 50px
             &-item
-                width: 270px
                 display: flex
                 flex-direction: column
                 align-items: center
                 &-icon
-                    display: flex
-                    align-items: center
-                    justify-content: center
-                    height: 80px
-                    width: 80px
-                    background: linear-gradient(to left, #4b6cb7, #182848)
-                    border-radius: 50%
-                    margin-bottom: 20px
+                    @include icon-outer
                 &-icon img
-                    height: 50px
-                    width: 50px
-
+                    @include icon-inner
                 &-description
-                    color: #34e7ee
+                    color: $color-second
                     text-transform: uppercase
                     border-bottom: 1px solid
-                    padding-bottom: 5px
-                    margin-bottom: 20px
+                    padding-bottom: 7px
+                    margin-bottom: 10px
                 &-title
-                    font-size: 1.2rem
+                    @include subtitle
+                    color: $color-black
                     font-weight: bold
-                    padding-bottom: 20px
+                    padding-bottom: 10px
                 &-text
                     font-size: 1rem
                     color: gray
                     padding-bottom: 20px
                 &-link
                     color: darkblue
+                    padding-bottom: 20px
 // / section features //
 
 // section testimonials //
@@ -239,62 +248,48 @@ $color-black: #232323
     .section-screens
 
         &-content
+            @include padding-top-button
+
             width: 80%
-            margin: 0 auto
             display: flex
-            padding-top: 50px
-            padding-bottom: 100px
+            text-align: center
             .section-screens-left
-                flex-basis: 30%
+                display: flex
+                justify-content: center
+                align-items: center
                 &-img img
                     height: 550px
             .section-screens-right
-                flex-basis: 70%
 
                 &-content
-                    padding-left: 50px
                     &-title
-                        font-size: 3rem
-                        font-weight: bold
-                        padding-bottom: 10px
+                        @include title
                     &-subtitle
-                        font-size: 1.2rem
-                        color: gray
+                        @include subtitle
                     &-links
                         display: flex
-                        margin-top: 50px
+                        justify-content: space-between
                         color: gray
                         &-link
-                            padding-right: 120px
-                            padding-bottom: 20px
                             text-transform: uppercase
                     &-screen
                         display: flex
                         flex-direction: column
-                        height: 100%
-                        width: 100%
+
                         &-box
+                            padding-top: 20px
                             display: flex
-                            align-content: center
-                            justify-content: center
-                            padding-bottom: 30px
+                            text-align: start
                             &-icon
-                                display: flex
-                                align-items: center
-                                justify-content: center
-                                height: 80px
-                                width: 110px
-                                background: linear-gradient(to left, #4b6cb7, #182848)
-                                border-radius: 50%
-                                margin-bottom: 20px
+                                @include icon-outer
                             &-icon img
-                                height: 50px
-                                width: 50px
+                                @include icon-inner
                             &-cont
                                 padding-left: 30px
                                 &-title
-                                    font-size: 1.2rem
+                                    @include subtitle
                                     font-weight: bold
+                                    color: $color-black
                                 &-text
 
 // / section screens //
@@ -302,28 +297,24 @@ $color-black: #232323
 // section download //
 // .section-inner
 .section-download
-    padding-top: 70px
-    padding-bottom: 70px
+    @include padding-top-button
+
     width: 100%
     display: flex
     flex-direction: column
     align-items: center
     text-align: center
-    background: linear-gradient(to left, #4b6cb7, #182848)
+    background: $bgc-primary
 
     &-title
-        font-size: 3rem
-        font-weight: bold
+        @include title
         color: $color-white
-        margin-bottom: 10px
     &-subtitle
+        @include subtitle
         color: $color-white
-        margin-bottom: 20px
-        font-size: 1.2rem
     &-buttons
         display: flex
         flex-direction: row
-        color: red
         &-button
         &-button img
             height: 50px
@@ -332,20 +323,18 @@ $color-black: #232323
 
 // section footer //
 .section-footer
-    width: 100%
-    background-color: #071124
+    // width: 100%
+    background-color: $bgc-second
     color: $color-white
     &-content
-        padding-top: 50px
-        padding-bottom: 30px
+        @include padding-top-button
+
         &-one
             display: flex
             flex-direction: column
             align-items: center
             &-title
-                font-size: 1.5rem
-                font-weight: bold
-                margin-bottom: 20px
+                @include title
             &-contact
                 margin-bottom: 100px
                 opacity: .4
@@ -360,7 +349,7 @@ $color-black: #232323
         &-two
             display: flex
             justify-content: space-between
-            width: 1224px
+            text-align: center
             margin: 0 auto
             &-logo
                 font-weight: bold
@@ -369,13 +358,14 @@ $color-black: #232323
                 height: 15px
             &-copyright
                 opacity: .4
+                padding-top: 10px
             &-social
                 display: flex
                 font-size: 1.5rem
-
+                justify-content: center
                 &-item
                     font-weight: bold
-                    padding-left: 10px
+                    margin: 5px
                 &-item img
                     // height: 30px
 // / section footer //
