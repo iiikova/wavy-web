@@ -9,24 +9,20 @@ $color-black: #232323
     width: 100%
     margin: 0 auto
 .section-inner
-    width: 1224px
+    width: 100%
     margin: 0 auto
 // / commons
 
 // header //
-.section-outer
-
 .section-header
-    position: relative
+    height: 100%
     color: $color-white
-    background: #4b6cb7
-    background: -webkit-linear-gradient(to left, #4b6cb7, #182848)
     background: linear-gradient(to left, #4b6cb7, #182848)
-
     .section-inner
-        height: 100vh
         display: flex
         flex-direction: column
+        width: 1224px
+
         .section-header-toolbar
             display: flex
             align-items: center
@@ -62,6 +58,7 @@ $color-black: #232323
             display: flex
             align-items: center
             justify-content: center
+            margin-bottom: 30px
 
         .section-header-wrapper
             width: 80%
@@ -85,7 +82,7 @@ $color-black: #232323
 
                 &-button button
                     margin-top: 30px
-                    padding: 20px 60px
+                    padding: 10px 40px
                     text-transform: uppercase
                     font-size: 1.2rem
                     background-color: orange
@@ -103,7 +100,7 @@ $color-black: #232323
 
 .section-welcome
     text-align: center
-    padding-top: 30px
+    margin-top: 30px
     padding-bottom: 30px
 
     &-content
@@ -379,6 +376,6 @@ $color-black: #232323
                 &-item
                     font-weight: bold
                     padding-left: 10px
-                &-item img 
+                &-item img
                     // height: 30px
 // / section footer //
